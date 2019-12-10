@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<section class="hero-section">
+  <div class="hero-slider owl-carousel">
+    <div class="hs-item set-bg" data-setbg="{% static 'img/60.jpg' %}">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-6 col-lg-7 text-white">
+            <span>Fortuna-S</span>
+            <h2>Italian Style</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+            <a href="{% static '#" class="site-btn sb-line">DISCOVER</a>
+            <a href="#" class="site-btn sb-white">ADD TO CART</a>
+          </div>
+        </div>
+        <div class="offer-card text-white">
+          <span>from</span>
+          <h2>$200</h2>
+          <p>SHOP NOW</p>
+        </div>
+      </div>
+    </div>
+    <div class="hs-item set-bg" data-setbg="{% static 'img/70.jpg' %}">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-6 col-lg-7 text-white">
+            <span></span>
+            <h2>American-Style</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+            <a href="{% static '#" class="site-btn sb-line">DISCOVER</a>
+            <a href="{% static '#" class="site-btn sb-white">ADD TO CART</a>
+          </div>
+        </div>
+        <div class="offer-card text-white">
+          <span>from</span>
+          <h2>$29</h2>
+          <p>SHOP NOW</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="slide-num-holder" id="snh-1"></div>
+  </div>
+</section>
+<!-- Hero section end -->
+
+
+
+
+
+    <section class="top-letest-product-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>LATEST PRODUCTS</h2>
+        </div>
+        <div class="product-slider owl-carousel">
+          {% if list_products %}
+          {% for lp in list_products %}
+          <div class="product-item">
+            <div class="pi-pic">
+              {% if lp.product.id %}
+              <div class="tag-new">New</div>
+              {% endif %}
+              <a href="{% url 'Products:detail' lp.product.id %}"><img  src=" {{lp.product_image.url }}" alt=""></a>
+              <div class="pi-links">
+                <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+              </div>
+            </div>
+            <div class="pi-text">
+              <h6>Tg {{lp.product.product_price}}</h6>
+              <p>{{lp.product.product_name}} </p>
+            </div>
+          </div>
+          {% endfor %}
+          {% else %}
+          Products doesn`t exist
+          {% endif %}
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="product-filter-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>POPULAR PRODUCTS</h2>
+        </div>
+        <div class="row">
+          {% if popular_products %}
+          {% for pc in popular_products %}
+          <div class="col-lg-3 col-sm-6">
+      <div class="product-item">
+      <div class="pi-pic">
+
+      <!-- <div class="tag-sale">ON SALE</div> -->
+
+      <!-- <a href="{% url 'Products:detail' c.id %}"><img  src=" {{c.product_image.url }}" alt=""></a>
+      <div class="pi-links">
+      <a href="{% static '#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+      <div class="wishlist-btn"><i class="flaticon-heart"></i></div> -->
+      <!-- <button id="swapHeart" class="btn btn-default swap">
+    <span class="glyphicon glyphicon-heart-empty"></span>
+</button> -->
+      <!-- </div>
+      </div>
+      <div class="pi-text">
+      <h6>Tg {{c.product_price}}</h6>
+      <p>{{c.product_name}} </p>
+      </div>
+      </div>
+      </div>
+      {% endfor %}
+
+                  {% else %}
+      Products doesn`t exist
+                {% endif %}
+        </div>
+      </div>
+      </section> -->
+
+
+
+
+
+    <section class="product-filter-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>BROWSE TOP SELLING PRODUCTS</h2>
+        </div>
+        <ul class="product-filter-menu">
+          <li><a href="{% static '#">TOPS</a></li>
+          <li><a href="{% static '#">JUMPSUITS</a></li>
+          <li><a href="{% static '#">LINGERIE</a></li>
+          <li><a href="{% static '#">JEANS</a></li>
+          <li><a href="{% static '#">DRESSES</a></li>
+          <li><a href="{% static '#">COATS</a></li>
+          <li><a href="{% static '#">JUMPERS</a></li>
+          <li><a href="{% static '#">LEGGINGS</a></li>
+        </ul>
+        <div class="row">
+          {% if list_products %}
+          {% for lp in list_products %}
+          <div class="col-lg-3 col-sm-6">
+{% include 'product-item.html' %}
+</div>
+{% endfor %}
+
+                  {% else %}
+Products doesn`t exist
+                {% endif %}
+
+
+              </div>
+                <!-- <div class="section section-delivery">
+                  <div>
+                    <h3>Free</h3>
+                  </div>
+                </div> -->
+
+
+
+                <section class="product-filter-section">
+                  <div class="container">
+                    <div class="section-title">
+                      <h2>SHOES</h2>
+                    </div>
+                    <div class="row">
+                      {% if lpo %}
+                      {% for lp in lpo %}
+                      <div class="col-lg-3 col-sm-6">
+                        <div class="product-item">
+                          {% include 'product-item.html' %}
+                        </div>
+                        {% endfor %}
+
+                        {% else %}
+                        Products doesn`t exist
+                        {% endif %}
+
+                      </section>
+        <div class="text-center pt-5">
+          <button class="site-btn sb-line sb-dark">LOAD MORE</button>
+        </div>
+      </div>
+    </section>
+
+
+{% endblock %}
