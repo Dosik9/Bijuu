@@ -1,0 +1,1 @@
+Counter({'the': 4, 'of': 3, 'Far': 1, 'out': 1, 'in': 1, 'uncharted': 1, 'backwaters': 1, 'unfashionable': 1, 'end': 1, 'western': 1, 'spiral': 1, 'arm': 1, 'Galaxy': 1, 'lies': 1, 'a': 1, 'small': 1, 'unregarded': 1, 'yellow': 1, 'sun.': 1})

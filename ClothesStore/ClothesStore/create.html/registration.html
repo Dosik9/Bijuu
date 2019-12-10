@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}registration{% endblock %}
+
+{%  block content %}
+<div class="content-section">
+  <center>
+
+
+  <script type="text/Javascript">
+         function generateHash()
+   {
+             var pass = document.getElementById('id_pass').value;
+             var rep_pass = document.getElementById('id_rep_pass').value;
+             var md = forge.md.sha256.create();
+             md.start();
+             md.update(pass);
+             var hashPass = md.digest().toHex();
+             md.start();
+             md.update(rep_pass)
+             var hashRepPass = md.digest().toHex();
+             document.getElementById("id_pass").value = hashPass;
+             document.getElementById("id_rep_pass").value = hashRepPass;
+         }
+     </script>
+
+     <h2>Sign up</h2>
+     <form method="POST" enctype="multipart/form-data">
+       <!-- <fieldset class="form-group">
+
+
+       </fieldset> -->
+       {% csrf_token %}
+       {{ form.as_p }}
+       <button type="submit">Sign up</button>
+     </form>
+     </center>
+</div>
+
+
+
+
+{% endblock %}

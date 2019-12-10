@@ -1,0 +1,15 @@
+  {% extends "base.html" %}
+
+  {% block content %}
+  {%if user %}
+  <br>
+  <p>Name: {{user.username}}</p>
+  <p>Email: {{user.email}}</p>
+  <p>User Image: <img src="{{user.user_avatar.url}}" alt="" width="200" height="200"></p>
+  <p>Dob: {{user.last_login}}</p>
+  <p>Password: {{user.password}}</p>
+  <p>User IMG URL: {{user.user_avatar.url}}</p>
+  {%else%}
+  <p>{{user}}</p>
+  {% endif %}
+  {% endblock %}

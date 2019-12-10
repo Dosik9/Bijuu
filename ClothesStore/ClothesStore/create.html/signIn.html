@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}SignIn{% endblock %}
+{% block header %}
+<link rel="stylesheet" href="{% static 'css/hd.css' %}">
+{% endblock %}
+{% block content %}
+<!--/ vladmaxi top bar -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/forge/0.8.2/forge.all.min.js"></script>
+
+   <script type="text/Javascript">
+       function generateHash()
+ {
+           var pass = document.getElementById('id_pass').value;
+           var md = forge.md.sha256.create();
+           md.start();
+           md.update(pass, "utf8");
+           var hashPass = md.digest().toHex();
+           document.getElementById("id_pass").value = hashPass;
+       }
+   </script>
+
+<form method="post" class="login">
+  {% csrf_token %}
+  {{form.as_p}}
+<!-- <p>
+  <label for="login">Логин:</label>
+  <input type="text" name="login" id="login" value="name@example.com">
+</p>
+
+<p>
+  <label for="password">Пароль:</label>
+  <input type="password" name="password" id="password" value="4815162342">
+</p> -->
+
+<p class="login-submit">
+  <button type="submit" class="login-button">Войти</button>
+</p>
+
+<p class="forgot-password"><a href="index.html">Забыл пароль?</a></p>
+</form>
+{% endblock %}

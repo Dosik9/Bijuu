@@ -1,0 +1,26 @@
+#Task2
+f=open("my_shopping_list.txt", "w")
+f.write("1. Leche \n")
+f.write("2. Agua\n")
+f.write("3. Manzana\n")
+f.write("4. and so on\n")
+f.close()
+f=open("my_shopping_list.txt")
+all_lines=f.read()
+print(all_lines)
+f.close()
+f=open("my_shopping_list.txt","a")
+f.write("5. Jabon\n")
+f.write("6. Bombanes\n")
+f.write("7. Helado\n")
+f.write("8. La bolsa\n")
+f.close()
+f=open("my_shopping_list.txt")
+line=f.readline()
+i=0
+while line:
+    print(line, end="")
+    line=f.readline()
+    i+=1
+print("how many positions in shoping list: " + str(i))
+f.close()
